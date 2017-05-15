@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>navigation</title>
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="mynote.css">
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/template-web.js"></script>
+    <script src="mynote.js"></script>
+    <script type="text/javascript" src='../js/util.js'></script>
+    <script type="text/javascript" src='../js/search.js'></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo text-center">
+                <img src="http://oh4kff8rx.bkt.clouddn.com/data/20161122/20161122141252_411.png">
+                <span>blog.moxiaonai.cn</span>
+            </div>
+            <div class="head-bottom">
+                <div class="row">
+                    <div class="col-md-6 col-sm-5 hidden-xs">
+                        <a href="" class="">快速制作一个属于自己的便签</a>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-sm-12 ">
+                        <div class="text-right loginbox">
+                            <p class="weizhi">
+                                <div class="simg">
+                                    <img  class="img-circle" src="../img/mingpian.jpg">
+                                </div>
+                                <a class="myinfo" title="个人中心" href="../admin/admin.html"></a>
+                                <a class="exit" onclick="logout()" title="点击退出" href="javascript:0">退出</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </header>
+    <div class="container">
+        <div class="search-box">
+                   <div class="row">
+                       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+                           <ul id="myTab" class="nav nav-tabs" style="border-bottom:10px;">
+                               <li class="active">
+                                   <a href="" dataurl="baidu_so" data-toggle="tab">百度</a>
+                               </li>
+                               <li class="hidden-xs">
+                                   <a href="" dataurl="google_so" data-toggle="tab">谷歌</a>
+                               </li>
+                               <li class="">
+                                   <a href="" dataurl="taobao_so" data-toggle="tab">淘宝</a>
+                               </li>
+                               <li class="hidden-xs">
+                                   <a href="" dataurl="jd_so" data-toggle="tab">京东</a>
+                               </li>
+                               <li class="hidden-xs">
+                                   <a href="" dataurl="zhihu_so" data-toggle="tab">知乎</a>
+                               </li>
+                               <li class="hidden-xs">
+                                   <a href="" dataurl="douban_so" data-toggle="tab">豆瓣</a>
+                               </li>
+                               <li class="">
+                                   <a href="" dataurl="weibo_so" data-toggle="tab">微博</a>
+                               </li>
+                               <li class="hidden-xs">
+                                   <a href=""  dataurl="wechat_so" data-toggle="tab">微信</a>
+                               </li>
+                               <li class="hidden-xs ">
+                                   <a href="" dataurl="github_so" data-toggle="tab">GitHub</a>
+                               </li>
+                               <li class="visible-xs">
+                                   <a href="" dataurl="yinyue_so" data-toggle="tab">音乐</a>
+                               </li>
+                               <!-- 下拉菜单 -->
+                               <li class="dropdown">
+                                     <a href="#" id="other_so" class="dropdown-toggle" data-toggle="dropdown">其他 <b class="caret"></b>
+                                     </a>
+                                 <ul class="dropdown-menu" role="menu" aria-labelledby="other_so" id="other_so_menu">
+                                       <li class=" visible-xs ">
+                                           <a href="#google_so" dataurl="google_so" data-toggle="tab">谷歌</a>
+                                       </li>
+                                       <li class="visible-xs ">
+                                           <a href="#jd_so" dataurl="jd_so" data-toggle="tab">京东</a>
+                                       </li>
+                                       <li class=" visible-xs ">
+                                           <a href="#zhihu_so" dataurl="zhihu_so" data-toggle="tab">知乎</a>
+                                       </li>
+                                       <li class=" visible-xs ">
+                                           <a href="#douban_so"  dataurl="douban_so" data-toggle="tab">豆瓣</a>
+                                       </li>
+                                       <li class=" visible-xs ">
+                                           <a href="#wechat_so" dataurl="wechat_so" data-toggle="tab">微信</a>
+                                       </li>
+                                       <li class=" visible-xs ">
+                                           <a href="#github_so" dataurl="github_so" data-toggle="tab">GitHub</a>
+                                       </li>
+                                       <li class="">
+                                           <a href="#shipin_so" onclick="addqita(this)" dataurl="shipin_so" data-toggle="tab">视频</a>
+                                       </li>
+                                       <li class="hidden-xs">
+                                           <a href="#yinyue_so" onclick="addqita(this)" dataurl="yinyue_so" data-toggle="tab">音乐</a>
+                                       </li>
+                                       <li class="">
+                                           <a href="#wangpan_so" onclick="addqita(this)" dataurl="wangpan_so" data-toggle="tab">网盘</a>
+                                       </li>
+                                 </ul>
+                              </li>               
+                           </ul>
+                           
+                           <div id="soTabContent" class="tab-content">
+                                  <div class="" id="search_so">
+                                       <form >
+                                           <div class="input-group">
+                                             <input type="text" class="form-control input-lg" name="word" placeholder="立即搜索" baidusug="1" id="bdSug" autocomplete="off">
+                                             <span class="input-group-btn">
+                                               <div class="btn btn-primary btn-lg" onclick="searchWeb()" id='search_web' style="line-height: 1.34;">搜一下</div>
+                                             </span>
+                                           </div>
+                                            <input type="hidden" name="soid" value="1">
+                                       </form>
+                                  </div>
+                           </div>
+                       </div><!-- /.col-lg-6 -->
+                   </div>
+               </div>
+        <div class="row search-info">
+            <div class="col-xs-3 col-sm-2 col-md-1 col-md-offset-1">
+                <p class="text-center">
+                    <a href="http://www.toutiao.com/" title="新闻" target="_blank">
+                        <button type="button" class="btn btn-lg news">新</button>
+                        <span>新闻</span>
+                    </a>
+                </p>
+            </div>
+            <div class="col-xs-3 col-sm-2 col-md-1">
+                <p class="text-center">
+                    <a href="http://www.taobao.com/" title="淘宝" target="_blank">
+                        <button type="button" class="btn btn-lg taobao">淘</button>
+                        <span>淘宝</span>
+                    </a>
+                </p>
+            </div>
+            <div class="col-xs-3 col-sm-2 col-md-1">
+                <p class="text-center">
+                    <a href="http://www.weibo.com/" title="微博" target="_blank">
+                        <button type="button" class="btn btn-lg weibo">微</button>
+                        <span>微博</span>
+                    </a>
+                </p>
+            </div>
+            <div class="col-xs-3 col-sm-2 col-md-1">
+                <p class="text-center">
+                    <a href="http://www.4399.com/" title="游戏" target="_blank">
+                        <button type="button" class="btn btn-lg youxi">游</button>
+                        <span>游戏</span>
+                    </a>
+                </p>
+            </div>
+            <div class="col-xs-3 col-sm-2 col-md-1">
+                <p class="text-center">
+                    <a href="http://wx.qq.com/" title="微信" target="_blank">
+                        <button type="button" class="btn btn-lg weixin">微</button>
+                        <span>微信</span>
+                    </a>
+                </p>
+            </div>
+            <div class="col-xs-3 col-sm-2 col-md-1">
+                <p class="text-center">
+                    <a href="http://youku.com/" title="优酷" target="_blank">
+                        <button type="button" class="btn btn-lg youku">优</button>
+                        <span>优酷</span>
+                    </a>
+                </p>
+            </div>
+            <div class="col-xs-3 col-sm-2 col-md-1">
+                <p class="text-center">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">
+                        <button type="button" class="btn btn-lg zhihu">知</button>
+                        <span>知乎</span>
+                    </a>
+                </p>
+            </div>
+            <div class="col-xs-3 col-sm-2 col-md-1">
+                <p class="text-center">
+                    <a href="http://sports.sohu.com/" title="体育" target="_blank">
+                        <button type="button" class="btn btn-lg tiyu">体</button>
+                        <span>体育</span>
+                    </a>
+                </p>
+            </div>
+            <div class="col-xs-3 col-sm-2 col-md-1">
+                <p class="text-center">
+                    <a href="http://mail.163.com/" title="邮箱" target="_blank">
+                        <button type="button" class="btn btn-lg youxiang">邮</button>
+                        <span>邮箱</span>
+                    </a>
+                </p>
+            </div>
+            <div class="col-xs-3 col-sm-2 col-md-1">
+                <p class="text-center">
+                    <a href="http://autohome.com.cn/" title="汽车" target="_blank">
+                        <button type="button" class="btn btn-lg qiche">汽</button>
+                        <span>汽车</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="noteInfo">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul>
+                        <li>
+                            <div class="panel-group" id="accordion" role="tablist">
+                              <div class="panel panel-default">
+                                <div class="panel-heading " role="tab" id="headingOne">
+                                  <h4 class="panel-title">
+                                    <p role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" id="sort-title">
+                                      分类(eg:新闻)
+                                      <i class="fa  fa-chevron-down  pull-right" id="arrowdown"></i>
+                                    </p>
+                                  </h4>
+                                  <!-- <i class="fa arrow"></i> -->
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                  <ul class="panel-body shuqian-list">
+                                        <li><a href="">书签名称(腾讯新闻)
+                                            </a></li>
+                                        <li>
+                                            <a href="">
+                                                书签名称(腾讯新闻)
+                                            </a>
+                                        </li> 
+                                        <li>
+                                            <a href="">
+                                                书签名称(腾讯新闻)
+                                            </a>
+                                        </li> 
+                                        <li>
+                                            <a href="">
+                                                书签名称(腾讯新闻)
+                                            </a>
+                                        </li> 
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <footer class="container">
+        <div class="text-left" style="color: #9C9C9C;">
+                访问:3396<span class="xlx">|</span>点击:1132<span class="xlx">|</span>搜索:317<span class="xlx">|</span><a href="">扫一扫</a>
+        </div>
+        <div class="text-reght myfont" style="color: #9C9C9C;">
+            <dl>
+              <dd>Copyright © 2017 shouku123. All Rights Reserved</dd>
+              <dd>
+                <a href="http://www.miibeian.gov.cn" style="color: #9C9C9C;">陕ICP备15006707号-1</a>
+                &nbsp;&nbsp;<a href="http://prayone.ml/">联系我们</a>
+              </dd>
+            </dl>
+        </div>
+    </footer>
+</body>  
+</html>

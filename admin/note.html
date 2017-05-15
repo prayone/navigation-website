@@ -1,0 +1,104 @@
+<style type="text/css">
+    .smallul li{
+        border: 1px solid #09A7F5;
+        height: 50px;
+        line-height: 50px;
+        margin: 10px;
+        cursor: pointer;
+    } 
+    .add-icon{
+        background: url("../img/add.png") left center no-repeat;
+        display: inline-block;
+        font-size: 16px;
+        padding-left: 40px;
+    }
+    .addnote{
+        font-size: 16px;
+    }
+    input{
+        border: none !important;
+        background-color: transparent;
+        width:350px;
+        padding-left: 15px;
+        margin-left: 15px;
+        border-bottom: 1px solid #ddd!important;
+    }
+    .form-group{
+        height: 40px;
+    }
+    label{
+        font-size: 18px;
+        font-weight: 500!important;
+    }
+    input:focus,
+    input:active:focus,
+    input.active:focus,
+    input.focus,
+    input:active.focus,
+    input.active.focus {
+        outline: none;          
+    }
+    .add-icon:focus,
+    .add-icon:active:focus,
+    .add-icon.active:focus,
+    .add-icon.focus,
+    .add-icon:active.focus,
+    .add-icon.active.focus {
+        outline: none;          
+    }
+    textarea{
+        border: 1px solid #ddd;
+        margin-left: 15px;
+        width: 350px;
+        height: 68px;
+        padding: 10px;
+    }
+    .textlabel{
+        position: relative;
+        top: -40px;
+        left: 0;
+    }
+</style>
+<div class="note">
+    <ul class="bigul">
+        <li>
+            <ul class="row list-inline smallul">
+                <li class="col-md-2 text-center"><a class="add-icon" href="#add-modal" data-toggle="modal">添加</a></li>
+            </ul>
+        </li>
+    </ul>
+</div> 
+<!-- 模态框 -->
+<div class="modal fade" id="add-modal"><!--半透明黑色大框 fade属性为动画-->
+    <div class="modal-dialog"> <!--宽/高/定位-->
+        <div class="modal-content"><!--边框/背景色/阴影-->
+            <div class="modal-header">
+                <span class="close" data-dismiss="modal">&times;</span><!--关闭按钮-->
+                <div class="addnote">
+                   <span>添加便签</span>
+                </div>
+            </div>
+            <div class="modal-body text-center">
+                <div class="form-group form-inline">
+                    <label for="mingcheng">名称</label>
+                    <input type="text" class="" id="mingcheng" placeholder="首页名称">
+                </div>
+                <div class="form-group form-inline">
+                    <label for="wangzhi">网址</label>
+                    <input type="text" class="" id="wangzhi" placeholder="例：http://www.baidu.com">
+                </div>
+                <div class="form-group form-inline">
+                    <label for="textarea" class="textlabel">备注</label>
+                    <textarea id="textarea" placeholder="备注"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" id="sign-in">确定</button>
+                <button class="btn btn-danger" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div> 
+
+            
+                            

@@ -1,0 +1,30 @@
+.homepage a{
+	margin-right: 10px;
+}
+.sortlist{
+	border: 1px solid #ccc;
+	width: 250px;
+	background-color: #fff;
+}
+.sortlist .lastli{
+	border-bottom: none 0;
+}
+.sortlist li{
+	border-bottom: 1px solid #ccc;
+	height: 50px;
+	line-height: 50px;
+	width: 250px;
+	padding-left: 30px;
+	cursor: pointer;
+}
+.infoBox{
+	background-color: #fff;
+	border: 1px solid #ccc;
+	padding-top: 30px;
+}
+.bg{
+	background-color: #e86505;
+}
+.smallul {
+	margin-left: 15px;
+}

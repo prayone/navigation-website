@@ -1,0 +1,127 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background: url(../img/bg.png) repeat;
+    font-size: 14px;
+    font-family: '微软雅黑', '宋体';
+    color: #000;
+}
+:hover{
+    outline: 0!important;
+}
+a{
+    text-decoration: none!important;
+    color:#000;
+}
+a:hover{
+    color: #F35E06;
+}
+.a-btn:focus,
+.a-btn:active:focus,
+.a-btn.active:focus,
+.a-btn.focus,
+.a-btn:active.focus,
+.a-btn.active.focus {
+    outline: none;          
+}
+ul li{
+    list-style: none!important;
+}
+.modal-footer a{
+    color: #00f;
+}
+.container{
+
+}
+.header{
+    padding: 20px 0 10px;
+}
+.logo img {
+    width: 75px;
+    height: 75px;
+    margin: 0 10px 0 auto;
+    border: 5px solid #10b4b4;
+    border-radius: 50px;
+    vertical-align: middle;
+}
+.logo span {
+    font-size: 24px;
+    font-weight: bold;
+}
+.loginbox  a{
+    margin-right: 10px;
+}
+.search-info{
+    margin: 30px 0;
+}
+.search-info button{
+    color: #fff
+}
+.search-info span{
+    color: #428bca;
+}
+.search-info .news{
+    background-color: #ED5565; 
+}
+.search-info .taobao{
+    background-color: #FC6E51; 
+}
+.search-info .weibo{
+    background-color: #FFCE54; 
+}
+.search-info .youxi{
+    background-color: #A0D468;
+}
+.search-info .weixin{
+    background-color: #48cfad;
+}
+.search-info .youku{
+    background-color: #4FC1E9;
+}
+.search-info .zhihu{
+    background-color: #5d9cec;
+}
+.search-info .tiyu{
+    background-color: #AC92EC;
+}
+.search-info .youxiang{
+    background-color: #EC87C0;
+}
+.search-info .qiche{
+    background-color: #aab2bd;
+}
+.shuqian-list li{
+    padding: 0 20px;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    text-align: center;
+}
+.shuqian-list li a{
+    color: #337ab7;
+    letter-spacing: 2px;
+}
+.shuqian-list li a:hover{
+    color: #F35E06;
+    text-decoration: underline!important;
+}
+.noteInfo .panel-body{
+    padding: 0;
+}
+#sort-title{
+    margin: 5px 0!important;
+}
+#arrowdown{
+    color: #555;
+    display: inline-block;
+}
+footer{
+    letter-spacing: 1px;
+}
+footer a{
+    color: #aaa;
+}
