@@ -5,7 +5,7 @@
 body{
     background: url(../img/bg.png) repeat;
     font-size: 14px;
-    font-family: '微软雅黑', '宋体';
+    font-family: '微软雅黑', '宋体'!important;
     color: #000;
 }
 :hover{

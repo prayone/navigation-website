@@ -1,4 +1,7 @@
 $(function(){
+	var base_login = '/op/login';
+	var base_register="/op/register";
+
 	// 已有账户关闭注册模态框
 	$("#tiao").click(function(){
 		$("#zhuce-modal").modal('hide');
@@ -22,33 +25,64 @@ $(function(){
 			  }
 		    });
 		function getList(){
-			$.getJSON("js/conf.js",function (result){
-				var username=$(".username").val();
-				var password=$(".password").val();
-				if(username==""||password==""){
-					alert("用户名或者密码不能为空！")
-					return;
-				}
-				if(username==result.username&password==result.password){
-					console.log("登陆成功！")
-					localStorage.setItem('username',username)
-					window.location.href="./mynote/mynote.html?username="+username;
-					//这块跳不过去
-				}else{
-					alert("密码或者登录名错误！")
-				}
-			});
+			// 登陆接口'/op/login'
+            var username=$(".username").val();
+            var password=$(".password").val();
+            if(username==""||password==""){
+                alert("用户名或者密码不能为空！")
+                return
+            }
+            var data = {
+                username:username,
+                password:password
+            }
+			zhpost(base_login,data).then(function(rs){
+                if(rs.info){
+                    console.log("登陆成功！")
+                    localStorage.setItem('username',username)
+                    setCookie('sid',rs.sid)
+                    setCookie('u_id',rs.userid);
+                    debugger
+                    window.location.href="./mynote/mynote.html";
+                }else if(rs.err){
+                    alert(rs.err)
+                }
+			})
 		};
-		setTimeout(function(){
-			$.getJSON("js/data.js",function(data){
-				console.log(data.username)
-				alert(data.username)
-				// for(var i in data.result){
-				// 	console.log(i)
-				// 	var title=i.title;
-				// 	$("#sort-title").html(title);
-				// }
-			});
-		},2000)
+	//注册
+    $("#register").on("click", getRegister);
+    $("#pw2").on('keyup',function(e){
+        if(e.keyCode === 13){
+            getRegister()
+        }
+    });
+	function getRegister () {
+		var username = $('#zhuce-up').val()
+		var password = $('#pw1').val()
+		var PWD = $('#pw2').val()
+		if(password!=PWD){
+			alert('两次输入密码不一致')
+			return
+		}
+        if(username==""||password==""){
+            alert("用户名或者密码不能为空！")
+            return;
+        }
+        var data = {
+            username:username,
+            password:password
+        }
+        zhpost(base_register,data).then(function (rs) {
+            if(rs.info){
+                alert("注册成功！")
+                location.href = 'index.html'
+            }else{
+                alert(rs.err)
+                $('#zhuce-up').val("");
+
+            }
+        });
+
+    };
 		
 });

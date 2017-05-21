@@ -1,6 +1,6 @@
 <style type="text/css">
     .smallul li{
-        border: 1px solid #09A7F5;
+        border: 1px solid #B9EEF3;
         height: 50px;
         line-height: 50px;
         margin: 10px;
@@ -53,10 +53,45 @@
         height: 68px;
         padding: 10px;
     }
-    .textlabel{
+    .textlabel {
         position: relative;
         top: -40px;
         left: 0;
+    }
+    .bulid-sort {
+        width: 20%;
+        border: 1px solid #B9EEF3;
+        height: 50px;
+        line-height: 50px;
+        margin: 20px;
+        margin: 10px auto;
+        cursor: pointer;
+    }
+    .shuqian{
+        color: #ff8400;
+        font-weight: bold;
+        height: 50px;
+        line-height: 50px;
+        display: inline-block;
+        background: url("../img/shuqian.png") left center no-repeat;
+        -webkit-background-size:50px 50px;
+        background-size:50px 50px;
+        padding-left: 70px;
+        font-size: 18px;
+        width: 200px;
+    }
+    #sortInfo{
+        padding:20px;
+    }
+    .edit{
+        margin:0 20px 0 300px;
+    }
+    .edit,.delete{
+        font-size: 18px;
+        color: #aaa;
+    }
+    .liLink{
+       font-size: 16px;
     }
 </style>
 <div class="note">
@@ -67,7 +102,15 @@
             </ul>
         </li>
     </ul>
-</div> 
+</div>
+<div class="showSort">
+    <ul id="sortInfo">
+
+    </ul>
+</div>
+<div class="bulid-sort text-center">
+    <a href="#bulid-sort-modal" class="add-icon" data-toggle="modal">创建分类</a>
+</div>
 <!-- 模态框 -->
 <div class="modal fade" id="add-modal"><!--半透明黑色大框 fade属性为动画-->
     <div class="modal-dialog"> <!--宽/高/定位-->
@@ -98,7 +141,64 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
+<!--创建分类的模态框-->
+<div class="modal fade" id="bulid-sort-modal"><!--半透明黑色大框 fade属性为动画-->
+    <div class="modal-dialog"> <!--宽/高/定位-->
+        <div class="modal-content"><!--边框/背景色/阴影-->
+            <div class="modal-header">
+                <span class="close" data-dismiss="modal">&times;</span><!--关闭按钮-->
+                <div class="addnote">
+                    <span>创建分类</span>
+                </div>
+            </div>
+            <div class="modal-body text-center">
+                <div class="form-group form-inline">
+                    <label for="sort-mc">名称</label>
+                    <input type="text" class="" id="sort-mc" placeholder="分类名称">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" onclick="addSort()" id="sort-sign-in">确定</button>
+                <button class="btn btn-danger" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="showSort_temp" type="text/html">
+    {{each rows as value index}}
+    <li>
+        <a href="javascript:0" class="shuqian">{{value.name}}</a>
+        <a href="" class="edit" title="编辑"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+        <a href="" class="delete" title="删除"><i class="fa fa-trash" aria-hidden="true"></i></a>
+        <ul class="sortLink row list-inline smallul">
+            <li class="col-md-2 text-center">
+                <a class="liLink" href="#add-modal" data-toggle="modal">百度</a>
+            </li>
+            <li class="col-md-2 text-center">
+                <a class="add-icon" href="#add-modal" data-toggle="modal">添加</a>
+            </li>
+        </ul>
+    </li>
+    {{/each}}
+</script>
+<script>
+
+    //显示分类
+    (function showSort() {
+        zhget(sort+"?u_id="+u_id).then(function (rs) {
+            console.log(rs)
+            if(rs.rows){
+                buildTableNoPage(rs,'showSort_temp','sortInfo');
+            }else if(rs.err){
+                alert(rs.err)
+            }else {
+                alert('请求出错')
+            }
+        });
+    })();
+</script>
+
 
             
                             
