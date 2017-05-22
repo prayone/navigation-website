@@ -239,14 +239,14 @@
     </div>
 </footer>
 <script type="text/html" id="category_temp">
-    {{each rows as value index}}
+    {{each $data as value index}}
     <li class="col-md-3">
         <div class="panel-group" id="accordion" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading " role="tab" id="headingOne">
                     <h4 class="panel-title">
                         <p role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" id="sort-title">
-                            {{value.name}}
+                            {{value.c_name}}
                             <i class="fa  fa-chevron-down  pull-right" id="arrowdown"></i>
                         </p>
                     </h4>
@@ -254,32 +254,21 @@
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <ul class="panel-body shuqian-list">
-                        <li>
-                            <a href="">
-                                书签名称(腾讯新闻)
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                书签名称(腾讯新闻)
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                书签名称(腾讯新闻)
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                书签名称(腾讯新闻)
-                            </a>
-                        </li>
+                        {{include "detaiList" value}}
                     </ul>
+
                 </div>
             </div>
         </div>
     </li>
     {{/each}}
+</script>
+<script id="detaiList" type="text/html">
+        {{each link_json as value index}}
+            <li>
+                <a href="">{{value.name}}</a>
+            </li>
+        {{/each}}
 </script>
 </body>
 </html>

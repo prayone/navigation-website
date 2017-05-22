@@ -1,4 +1,5 @@
 var sort="/rs/event_category";
+var sqlink="/rs/event_link"
 var operate = '';
 $(function () {
 	var username = localStorage.getItem('username');
@@ -52,10 +53,53 @@ function addSort() {
         });
 	}
 }
+
+
+
+// -----------------------------------------------------------------
+// 我的书签：创建链接
+var u_id=getCookie("u_id");
+function addNote() {
+    var name=$("#mingcheng").val();
+    var link=$("#wangzhi").val();
+    var c_id=$(".sortliid").attr("sortId");
+    var data={
+        name:name,
+        link:link,
+        c_id:c_id
+        // u_id:u_id
+    }
+    debugger
+
+    // if(operate=='edit'){
+        // 修改
+        // operate = '';//重置
+        // var sortId = $('#bulid-sort-modal').attr('c_id');
+    //     zhput(sort+"/"+sortId,data).then(function (rs) {
+    //         if(rs.info){
+    //             clearForm();
+    //             showSort();
+    //         }else if(rs.err){
+    //             alert(rs.err)
+    //         }
+    //     })
+    // }else{
+        //新增
+        zhpost(sqlink,data).then(function (rs) {
+            if(rs){
+                clearForm();
+                // showSort();
+                console.log(rs)
+            }else if(rs.err){
+                alert(rs.err)
+            }
+        });
+    // }
+}
 function clearForm() {
     $("#bulid-sort-modal").modal('hide');
     $("#sort-mc").val("");
 }
-// 这里我加点改动
+
 
 
