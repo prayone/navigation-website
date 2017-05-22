@@ -1,4 +1,5 @@
 var sort="/rs/event_category";
+var operate = '';
 $(function () {
 	var username = localStorage.getItem('username');
 	//防止非法进入
@@ -23,12 +24,35 @@ $(function () {
 var u_id=getCookie("u_id");
 function addSort() {
     var name=$("#sort-mc").val();
-    debugger
     var data={
         name:name,
         u_id:u_id
     }
-    zhpost(sort,data).then(function (rs) {
-        console.log(rs);
-    });
+    if(operate=='edit'){
+    	// 修改
+		operate = '';//重置
+        var sortId = $('#bulid-sort-modal').attr('c_id');
+       zhput(sort+"/"+sortId,data).then(function (rs) {
+       	 	if(rs.info){
+                clearForm();
+                showSort();
+            }else if(rs.err){
+                alert(rs.err)
+            }
+       })
+	}else{
+    	//新增
+        zhpost(sort,data).then(function (rs) {
+        	if(rs.info){
+                clearForm();
+                showSort();
+			}else if(rs.err){
+        		alert(rs.err)
+			}
+        });
+	}
+}
+function clearForm() {
+    $("#bulid-sort-modal").modal('hide');
+    $("#sort-mc").val("");
 }

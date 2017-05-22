@@ -93,6 +93,9 @@
     .liLink{
        font-size: 16px;
     }
+    .hide{
+        display: none;
+    }
 </style>
 <div class="note">
     <ul class="bigul">
@@ -160,17 +163,17 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-success" onclick="addSort()" id="sort-sign-in">确定</button>
-                <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                <button class="btn btn-danger" onclick="closeAddSort()">取消</button>
             </div>
         </div>
     </div>
 </div>
 <script id="showSort_temp" type="text/html">
     {{each rows as value index}}
-    <li>
-        <a href="javascript:0" class="shuqian">{{value.name}}</a>
-        <a href="" class="edit" title="编辑"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-        <a href="" class="delete" title="删除"><i class="fa fa-trash" aria-hidden="true"></i></a>
+    <li sortId="{{value.id}}" class="sortliid">
+        <a href="javascript:0" class="shuqian" onclick="display(this)">{{value.name}}</a>
+        <a href="javascript:0" class="edit" onclick="editSort(this)"  title="编辑"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+        <a href="javascript:0" class="delete" onclick="deleteSort()" title="删除"><i class="fa fa-trash" aria-hidden="true"></i></a>
         <ul class="sortLink row list-inline smallul">
             <li class="col-md-2 text-center">
                 <a class="liLink" href="#add-modal" data-toggle="modal">百度</a>
@@ -183,9 +186,9 @@
     {{/each}}
 </script>
 <script>
-
     //显示分类
-    (function showSort() {
+    showSort();
+    function showSort() {
         zhget(sort+"?u_id="+u_id).then(function (rs) {
             console.log(rs)
             if(rs.rows){
@@ -196,7 +199,37 @@
                 alert('请求出错')
             }
         });
-    })();
+    };
+
+   function  display (info) {
+       $(".sortLink").toggleClass("hide");
+   };
+
+    //删除分类
+    function deleteSort() {
+        if(!confirm('确认要删除吗？')){
+            return;
+        }
+        var sortId=$(".sortliid").attr("sortId");
+        zhdelete(sort+"/"+sortId).then(function (rs) {
+            if(rs.info){
+                showSort();
+            }else if(rs.err){
+                alert(rs.err)
+            }
+        });
+    }
+    //修改分类
+    function editSort(dom) {
+        operate = 'edit';
+        $('#bulid-sort-modal').modal();
+        $("#sort-mc").val($(dom).siblings(0).html())
+        $('#bulid-sort-modal').attr('c_id',$(dom).parent().attr('sortid'))
+    }
+    function closeAddSort() {
+        clearForm();
+        $('#bulid-sort-modal').modal("hide")
+    }
 </script>
 
 

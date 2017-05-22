@@ -6,7 +6,7 @@ $(function(){
 		location.href='../index.html'
 	}
 	$(".myinfo").html(username);
-	zhget(base_category+'?u_id=0').then(function (rs) {
+	zhget(base_category+'?u_id=1').then(function (rs) {
 		if(rs.rows){
             buildTableNoPage(rs,'category_temp','category_list');
         }else if(rs.err){

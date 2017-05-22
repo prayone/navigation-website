@@ -42,7 +42,6 @@ $(function(){
                     localStorage.setItem('username',username)
                     setCookie('sid',rs.sid)
                     setCookie('u_id',rs.userid);
-                    debugger
                     window.location.href="./mynote/mynote.html";
                 }else if(rs.err){
                     alert(rs.err)
