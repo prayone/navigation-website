@@ -56,3 +56,6 @@ function clearForm() {
     $("#bulid-sort-modal").modal('hide');
     $("#sort-mc").val("");
 }
+
+
+
