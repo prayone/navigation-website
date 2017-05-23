@@ -245,14 +245,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading " role="tab" id="headingOne">
                     <h4 class="panel-title">
-                        <p role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" id="sort-title">
+                        <p role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{index}}" id="sort-title">
                             {{value.c_name}}
-                            <i class="fa  fa-chevron-down  pull-right" id="arrowdown"></i>
+                            <i class="fa  fa-chevron-down  pull-right arrowdown" ></i>
                         </p>
                     </h4>
-                    <!-- <i class="fa arrow"></i> -->
                 </div>
-                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div id="collapse{{index}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <ul class="panel-body shuqian-list">
                         {{include "detaiList" value}}
                     </ul>
@@ -266,9 +265,34 @@
 <script id="detaiList" type="text/html">
         {{each link_json as value index}}
             <li>
-                <a href="">{{value.name}}</a>
+                <a href="{{value.link}}" target="_blank" title="{{value.intro}}">{{value.name}}</a>
+                <a title="点击查看二维码" onclick="erweima(this)" data-toggle="modal"  class="pull-right erweima" ><i class="fa fa-qrcode"></i></a>
             </li>
         {{/each}}
 </script>
+<!--二维码模态框-->
+<div class="modal fade" id="ewm-modal"><!--半透明黑色大框 fade属性为动画-->
+    <div class="modal-dialog"> <!--宽/高/定位-->
+        <div class="modal-content"><!--边框/背景色/阴影-->
+            <div class="modal-header">
+                <span class="close" data-dismiss="modal">&times;</span><!--关闭按钮-->
+                <div class="logo text-center">
+                    <img src="http://oh4kff8rx.bkt.clouddn.com/data/20161122/20161122141252_411.png">
+                    <span>blog.moxiaonai.cn</span>
+                </div>
+
+            </div>
+            <div class="modal-body text-center">
+                <h3  class="text-center ewmtitle"></h3>
+                <h4><small class="lianjie"></small></h4>
+                <img src="" alt="" class="ewmimg">
+                <h4><small >扫一扫，手机浏览</small></h4>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-right" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

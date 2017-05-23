@@ -1,6 +1,9 @@
+var show="/rs/v_category_link";
 var sort="/rs/event_category";
 var sqlink="/rs/event_link"
+var u_id=getCookie("u_id");
 var operate = '';
+var flag='';
 $(function () {
 	var username = localStorage.getItem('username');
 	//防止非法进入
@@ -22,7 +25,6 @@ $(function () {
 
 });
 // 我的书签：创建分类
-var u_id=getCookie("u_id");
 function addSort() {
     var name=$("#sort-mc").val();
     var data={
@@ -62,43 +64,53 @@ var u_id=getCookie("u_id");
 function addNote() {
     var name=$("#mingcheng").val();
     var link=$("#wangzhi").val();
-    var c_id=$(".sortliid").attr("sortId");
+    var c_id=$("#add-modal").attr("bindId");
+    var intro=$("#textarea").val();
     var data={
         name:name,
         link:link,
-        c_id:c_id
-        // u_id:u_id
+        c_id:c_id,
+        intro:intro
     }
-    debugger
-
-    // if(operate=='edit'){
+    if(flag=='edit'){
         // 修改
-        // operate = '';//重置
-        // var sortId = $('#bulid-sort-modal').attr('c_id');
-    //     zhput(sort+"/"+sortId,data).then(function (rs) {
-    //         if(rs.info){
-    //             clearForm();
-    //             showSort();
-    //         }else if(rs.err){
-    //             alert(rs.err)
-    //         }
-    //     })
-    // }else{
+       flag = '';//重置
+        var noteid=$("#add-modal").attr("n_id");
+        var data1={
+            name:name,
+            link:link,
+            intro:intro
+        }
+        zhput(sqlink+"/"+noteid,data1).then(function (rs) {
+            if(rs.info){
+                clearForm();
+                showSort();
+            }else if(rs.err){
+                alert(rs.err)
+            }
+        })
+    }else{
         //新增
         zhpost(sqlink,data).then(function (rs) {
             if(rs){
                 clearForm();
-                // showSort();
-                console.log(rs)
+                c_id='';
+                showSort();
+
             }else if(rs.err){
                 alert(rs.err)
             }
         });
-    // }
+    }
 }
 function clearForm() {
     $("#bulid-sort-modal").modal('hide');
     $("#sort-mc").val("");
+    $("#add-modal").modal('hide');
+    $("#wangzhi").val("");
+    $("#mingcheng").val("");
+    $("#textarea").val("");
+
 }
 
 

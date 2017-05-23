@@ -21,3 +21,14 @@
 	width: 100%;
 	height: 100%;
 }
+#detaiList li{
+	height: 45px;
+	line-height: 45px;
+}
+.erweima i{
+	color: #aaa!important;
+	font-size: 18px!important;
+}
+.ewmtitle{
+	margin-bottom: 15px;
+}

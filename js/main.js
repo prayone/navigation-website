@@ -7,7 +7,7 @@ $(function(){
 		$("#zhuce-modal").modal('hide');
 	});
 	//面板的小箭头图标
-	$("#arrowdown").on("click",function(){
+	$(".arrowdown").on("click",function(){
 		if($(this).hasClass("fa-chevron-down")){
 			$(this).removeClass("fa-chevron-down");
 			$(this).addClass("fa-chevron-left");
@@ -16,6 +16,7 @@ $(function(){
 			$(this).removeClass("fa-chevron-left");
 		}
 	});
+
 		// 校验登录
 		// getList();
 		$("#sign-in").on("click",getList);//还有
@@ -85,3 +86,12 @@ $(function(){
     };
 		
 });
+var iewmsrc="http://pan.baidu.com/share/qrcode?w=150&h=150&url=";
+function indexewm(info) {
+    $("#indexewm-modal").modal();
+    $("#ewm-modal").modal();
+    $(".ewmtitle").html($(info).siblings(0).html());
+    $(".lianjie").html($(info).siblings(0).attr("href"))
+    var iimglink=$(info).siblings(0).attr("href");
+    $(".ewmimg").attr("src",iewmsrc+iimglink)
+}

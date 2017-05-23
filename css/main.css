@@ -5,7 +5,7 @@
 body{
     background: url(../img/bg.png) repeat;
     font-size: 14px;
-    font-family: '微软雅黑', '宋体'!important;
+    font-family: '微软雅黑','黑体','宋体'!important;
     color: #000;
 }
 :hover{
@@ -95,11 +95,10 @@ ul li{
 .shuqian-list li{
     padding: 0 20px;
     width: 100%;
-    height: 35px;
-    line-height: 35px;
+    height: 45px;
+    line-height: 45px;
     border-bottom: 1px solid #ddd;
     font-size: 16px;
-    text-align: center;
 }
 .shuqian-list li a{
     color: #337ab7;
@@ -115,7 +114,7 @@ ul li{
 #sort-title{
     margin: 5px 0!important;
 }
-#arrowdown{
+.arrowdown{
     color: #555;
     display: inline-block;
 }
@@ -124,4 +123,11 @@ footer{
 }
 footer a{
     color: #aaa;
+}
+.erweima{
+    cursor: pointer;
+}
+.erweima i{
+    color: #aaa!important;
+    font-size: 18px!important;
 }
