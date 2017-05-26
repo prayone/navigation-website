@@ -6,7 +6,8 @@
 ## prayone书签网的使用：
 1.  在未登录情况下，他仅仅是一个多功能的搜索神器，如下图  
 
-![](./img/readme/index.png)
+![](./img/readme/index.png)  
+![](./img/readme/index.png)  
 
   
   -- created by prayone
