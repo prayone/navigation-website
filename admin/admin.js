@@ -1,11 +1,15 @@
 var show="/rs/v_category_link";
 var sort="/rs/event_category";
 var sqlink="/rs/event_link"
+var base_addtitle="/op/updateTitle";
 var u_id=getCookie("u_id");
 var operate = '';
 var flag='';
+
 $(function () {
-	var username = localStorage.getItem('username');
+    var u_title=getCookie("u_title");
+    $(".logo span").html(u_title);
+    var username = localStorage.getItem('username');
 	//防止非法进入
 	if(!username){
 		location.href='../index.html'
@@ -24,6 +28,7 @@ $(function () {
 
 
 });
+
 // 我的书签：创建分类
 function addSort() {
     var name=$("#sort-mc").val();

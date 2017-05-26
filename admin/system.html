@@ -7,55 +7,56 @@
 		text-align: center;
 		width: 13.8%!important;
 		cursor: pointer;
-	} 
+	}
+	#up li{
+		display: none;
+	}
 	.mysort{
 		padding-left: 20px;
+	}
+	#items li{
+		border: 2px solid #e86505;
+		cursor: move;
+		height: 40px;
+		line-height: 40px;
+		background: url("../img/selected.png") right bottom no-repeat;
+		position: relative;
+	}
+	.fa-times{
+		position: absolute;
+		top:-16px;
+		right: -11px;
+		cursor: pointer;
 	}
 </style>
 <div class="system">
 	<ul class="bigul">
 		<li>
-			<ul class="row list-inline smallul">
+			<ul class="row list-inline smallul" id="up">
 				<li class="col-md-2">破解</li>
 				<li class="col-md-2">VPN</li>
 				<li class="col-md-2">网络安全教程</li>
 				<li class="col-md-2">ASO工具</li>
 				<li class="col-md-2">黑帽资源</li>
 				<li class="col-md-2">手机网赚平台</li>
-			</ul>
-		</li>
-		<li>
-			<ul class="row list-inline smallul">
 				<li class="col-md-2">工商查询</li>
 				<li class="col-md-2">产品经理网站</li>
 				<li class="col-md-2">支付接口聚合</li>
 				<li class="col-md-2">自动拨号平台</li>
 				<li class="col-md-2">买小号/软件</li>
 				<li class="col-md-2">网站流量</li>
-			</ul>
-		</li>
-		<li>
-			<ul class="row list-inline smallul">
 				<li class="col-md-2">在线课堂</li>
 				<li class="col-md-2">模拟器</li>
 				<li class="col-md-2">源码</li>
 				<li class="col-md-2">CG</li>
 				<li class="col-md-2">影视</li>
 				<li class="col-md-2">图片素材</li>
-			</ul>
-		</li>
-		<li>
-			<ul class="row list-inline smallul">
 				<li class="col-md-2">3D</li>
 				<li class="col-md-2">音乐</li>
 				<li class="col-md-2">蜘蛛池</li>
 				<li class="col-md-2">使用小网址</li>
 				<li class="col-md-2">安全网址</li>
 				<li class="col-md-2">SEO</li>
-			</ul>
-		</li>
-		<li>
-			<ul class="row list-inline smallul">
 				<li class="col-md-2">外包平台</li>
 				<li class="col-md-2">前端</li>
 				<li class="col-md-2">机器人平台</li>
@@ -68,9 +69,124 @@
 	<div class="mysort">
 		<h3><strong>我的分类（拖动可以排序）</strong></h3>
 		<div class="sortinfo">
-			<!--  -->
+			<ul class="row list-inline smallul" id="items">
+
+
+			</ul>
 		</div>
 	</div>
-</div>    				
+</div>
+<!--模板渲染-->
+<script type="text/html" id="showaddclick_temp">
+	{{each rows as value index}}
+	<li class="col-md-3 sortliid" sortId="{{value.id}}">{{value.name}}<img onclick="delsort()" src="../img/del-em.png" class="fa-times"></li>
+	{{/each}}
+</script>
+<!--点击添加事件-->
+<script>
+//	渲染分类
+    showaddclick();
+    function showaddclick() {
+        var showsort="/rs/event_category";
+        zhget(showsort+"?u_id="+u_id).then(function (rs) {
+            if(rs.rows){
+                buildTableNoPage(rs,'showaddclick_temp','items');
+                $('#up li').each(function () {
+                    var flag = false;
+                    for(var i = 0;i<rs.rows.length;i++){
+                        if($(this).html()==rs.rows[i].name){
+                            flag = true;
+						}
+					}
+                    if(!flag){
+                        $(this).show();
+                    }
+                })
+            }else {
+                alert(rs)
+            }
+        });
+    }
+//删除分类
+function delsort() {
+        if(!confirm('确认要删除吗？')){
+            return;
+        }
+        var sortId=$(".sortliid").attr("sortId");
+        zhdelete(sort+"/"+sortId).then(function (rs) {
+            if(rs.info){
+                showaddclick();
+            }else if(rs.err){
+                alert(rs.err)
+            }
+        });
+};
+    $('#up li').on('click',function () {
+		addclick(this)
+    })
+//新增分类 --------------------------------------
+	function addclick(dom) {
+		var name=$(dom).html();
+
+		var data={
+		    name:name,
+			u_id:u_id
+		}
+        zhpost(sort,data).then(function (rs) {
+            if(rs.info){
+                $(dom).css("display","none");
+                showaddclick();
+            }else if(rs.err){
+                alert(rs.err)
+            }
+        });
+    }
+</script>
+<!--——————————————————————————————————————————————————————————————————————————————-->
+<!--拖动排序-->
+<script src="../js/Sortable.min.js"></script>
+<script>
+    var el = document.getElementById('items');
+    new Sortable(el, {
+        group: "name",
+        store: null, // @see Store
+        handle: ".my-handle", // 点击目标元素约束开始
+        draggable: ".item",   // 指定那些选项需要排序
+        ghostClass: "sortable-ghost",
+
+        onStart: function (/**Event*/evt) { // 拖拽
+            var itemEl = evt.item;
+        },
+
+        onEnd: function (/**Event*/evt) { // 拖拽
+            var itemEl = evt.item;
+        },
+
+        onAdd: function (/**Event*/evt){
+            var itemEl = evt.item;
+        },
+
+        onUpdate: function (/**Event*/evt){
+            var itemEl = evt.item; // 当前拖拽的html元素
+        },
+
+        onRemove: function (/**Event*/evt){
+            var itemEl = evt.item;
+        }
+    });
+    new Sortable(el, {
+        group: "localStorage-example",
+        store: {
+            get: function (sortable) {
+                var order = localStorage.getItem(sortable.options.group);
+                return order ? order.split('|') : [];
+            },
+            set: function (sortable) {
+                var order = sortable.toArray();
+                localStorage.setItem(sortable.options.group, order.join('|'));
+            }
+        }
+    })
+</script>
     		
     						

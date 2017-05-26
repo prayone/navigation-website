@@ -43,6 +43,7 @@ $(function(){
                     localStorage.setItem('username',username)
                     setCookie('sid',rs.sid)
                     setCookie('u_id',rs.userid);
+                    setCookie('u_title',rs.title);
                     window.location.href="./mynote/mynote.html";
                 }else if(rs.err){
                     alert(rs.err)

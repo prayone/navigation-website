@@ -1,6 +1,8 @@
 $(function(){
 	var base_category = '/rs/v_category_link';
     var u_id=getCookie("u_id");
+    var u_title=getCookie("u_title");
+    $(".logo span").html(u_title);
     //获取用户名并渲染
 	var username=localStorage.getItem("username");
 	if(!username){

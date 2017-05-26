@@ -10,12 +10,38 @@
 		font-weight:500;
 		margin-left: 20px; 
 	}
+    .infobtn{
+        background-color: #e86505;
+        margin:30px 30px!important;
+        font-size: 20px;
+        color: #fff;
+
+    }
 </style>
 <div class="myinfo">
 	<div class="form-group form-inline">
        <label for="index">首页名称</label>
-       <input type="text" class="form-control" id="index" placeholder="首页名称">
+       <input type="text" class="form-control" id="indexTitle" placeholder="首页名称">
 	</div>
-</div>    				
+    <div class="text-center">
+        <button class="btn infobtn lg-btn" onclick="addtitle()">
+            确定
+        </button>
+    </div>
+</div>
+<script>
+    function addtitle() {
+        var name=$("#indexTitle").val();
+        var data={title:name};
+        zhpost(base_addtitle,data).then(function (rs) {
+            if(rs.info){
+                console.log(rs.info)
+                location.href="../index.html"
+            }else if(rs.err){
+                alert(rs.err)
+            }
+        });
+    };
+</script>
     		
     						
