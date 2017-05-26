@@ -8,9 +8,7 @@ body{
     font-family: '微软雅黑','黑体','宋体'!important;
     color: #000;
 }
-li{
-    overflow: hidden!important;
-}
+
 :hover{
     outline: 0!important;
 }

@@ -48,7 +48,7 @@
     <div class="search-box">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
-                <ul id="myTab" class="nav nav-tabs" style="border-bottom:10px;">
+                <ul class="nav nav-tabs myTab">
                     <li class="active">
                         <a href="" dataurl="baidu_so" data-toggle="tab">百度</a>
                     </li>
@@ -81,7 +81,7 @@
                     </li>
                     <!-- 下拉菜单 -->
                     <li class="dropdown">
-                        <a href="#" id="other_so" class="dropdown-toggle" data-toggle="dropdown">其他 <b class="caret"></b>
+                        <a href="#" class="other_so" class="dropdown-toggle" data-toggle="dropdown">其他 <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="other_so" id="other_so_menu">
                             <li class=" visible-xs ">
@@ -119,9 +119,9 @@
                     <div class="" id="search_so">
                         <form >
                             <div class="input-group">
-                                <input type="text" class="form-control input-lg" name="word" placeholder="立即搜索" baidusug="1" id="bdSug" autocomplete="off">
+                                <input type="text" class="form-control input-lg bdSug" name="word" placeholder="立即搜索" baidusug="1"  autocomplete="off">
                                 <span class="input-group-btn">
-                                               <div class="btn btn-primary btn-lg" onclick="searchWeb()" id='search_web' style="line-height: 1.34;">搜一下</div>
+                                               <div class="btn btn-primary btn-lg search_web" onclick="searchWeb()">搜一下</div>
                                              </span>
                             </div>
                             <input type="hidden" name="soid" value="1">

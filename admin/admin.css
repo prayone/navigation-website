@@ -28,3 +28,6 @@
 .smallul {
 	margin-left: 15px;
 }
+li{
+	overflow: hidden!important;
+}

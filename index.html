@@ -42,7 +42,7 @@
         <div class="search-box">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
-                    <ul id="myTab" class="nav nav-tabs" style="border-bottom:10px;">
+                    <ul  class="nav nav-tabs myTab">
                         <li class="active">
                             <a href="" dataurl="baidu_so" data-toggle="tab">百度</a>
                         </li>
@@ -75,35 +75,36 @@
                         </li>
                         <!-- 下拉菜单 -->
                         <li class="dropdown">
-                              <a href="#" id="other_so" class="dropdown-toggle" data-toggle="dropdown">其他 <b class="caret"></b>
+                              <a href="javascript:0 " class="other_so" class="dropdown-toggle" data-toggle="dropdown"> 其他 <span class="caret"></span>
+
                               </a>
-                          <ul class="dropdown-menu" role="menu" aria-labelledby="other_so" id="other_so_menu">
+                          <ul class="dropdown-menu other_so_menu" role="menu">
                                 <li class=" visible-xs ">
-                                    <a href="#google_so" dataurl="google_so" data-toggle="tab">谷歌</a>
+                                    <a href="#google_so" dataurl="google_so">谷歌</a>
                                 </li>
                                 <li class="visible-xs ">
-                                    <a href="#jd_so" dataurl="jd_so" data-toggle="tab">京东</a>
+                                    <a href="#jd_so" dataurl="jd_so">京东</a>
                                 </li>
                                 <li class=" visible-xs ">
-                                    <a href="#zhihu_so" dataurl="zhihu_so" data-toggle="tab">知乎</a>
+                                    <a href="#zhihu_so" dataurl="zhihu_so">知乎</a>
                                 </li>
                                 <li class=" visible-xs ">
-                                    <a href="#douban_so"  dataurl="douban_so" data-toggle="tab">豆瓣</a>
+                                    <a href="#douban_so"  dataurl="douban_so">豆瓣</a>
                                 </li>
                                 <li class=" visible-xs ">
-                                    <a href="#wechat_so" dataurl="wechat_so" data-toggle="tab">微信</a>
+                                    <a href="#wechat_so" dataurl="wechat_so">微信</a>
                                 </li>
                                 <li class=" visible-xs ">
-                                    <a href="#github_so" dataurl="github_so" data-toggle="tab">GitHub</a>
+                                    <a href="#github_so" dataurl="github_so">GitHub</a>
                                 </li>
                                 <li class="">
-                                    <a href="#shipin_so" onclick="addqita(this)" dataurl="shipin_so" data-toggle="tab">视频</a>
+                                    <a href="#shipin_so" onclick="addqita(this)" dataurl="shipin_so">视频</a>
                                 </li>
                                 <li class="hidden-xs">
-                                    <a href="#yinyue_so" onclick="addqita(this)" dataurl="yinyue_so" data-toggle="tab">音乐</a>
+                                    <a href="#yinyue_so" onclick="addqita(this)" dataurl="yinyue_so">音乐</a>
                                 </li>
                                 <li class="">
-                                    <a href="#wangpan_so" onclick="addqita(this)" dataurl="wangpan_so" data-toggle="tab">网盘</a>
+                                    <a href="#wangpan_so" onclick="addqita(this)" dataurl="wangpan_so" >网盘</a>
                                 </li>
                           </ul>
                        </li>               
@@ -113,9 +114,9 @@
                            <div class="" id="search_so">
                                 <form >
                                     <div class="input-group">
-                                      <input type="text" class="form-control input-lg" name="word" placeholder="立即搜索" baidusug="1" id="bdSug" autocomplete="off">
+                                      <input type="text" class="form-control input-lg bdSug" name="word" placeholder="立即搜索" baidusug="1"  autocomplete="off">
                                       <span class="input-group-btn">
-                                        <div class="btn btn-primary btn-lg" onclick="searchWeb()" id='search_web' style="line-height: 1.34;">搜一下</div>
+                                        <div class="btn btn-primary btn-lg search_web">搜一下</div>
                                       </span>
                                     </div>
                                      <input type="hidden" name="soid" value="1">
@@ -708,12 +709,12 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="login-up">用户名：</label>
-                        <input type="text" class="form-control username">
+                        <label for="loginup">用户名：</label>
+                        <input type="text" class="form-control username" id="loginup">
                     </div>
                     <div class="form-group">
-                        <label for="password">密码：</label>
-                        <input type="password" class="form-control password">
+                        <label for="password11">密码：</label>
+                        <input type="password" class="form-control password" id="password11">
                     </div>
                 </div>
                 <div class="modal-footer">
