@@ -6,7 +6,12 @@
 ## prayone书签网的使用：
 1.  在未登录情况下，他仅仅是一个多功能的搜索神器，如下图  
 
-![](./img/readme/index.png)![](./img/readme/index.png)  
+![](./img/readme/index.png)  
+2.  如果你已注册，并且成功登陆，可点击右侧的个人昵称，进入管理书签页面，如下图  
+
+![](./img/readme/zhuye.jpg)  
+![](./img/readme/system.jpg)
+
 
   
   -- created by prayone
