@@ -190,7 +190,7 @@
     <li sortId="{{value.c_id}}" class="sortliid">
         <a href="javascript:0" class="shuqian" onclick="display(this)">{{value.c_name}}</a>
         <a href="javascript:0" class="edit" onclick="editSort(this)"  title="编辑"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-        <a href="javascript:0" class="delete" onclick="deleteSort()" title="删除"><i class="fa fa-trash" aria-hidden="true"></i></a>
+        <a href="javascript:0" class="delete" onclick="deleteSort(this)" title="删除"><i class="fa fa-trash" aria-hidden="true"></i></a>
         <ul class="sortLink row list-inline smallul">
             {{include "noteList" value}}
         </ul>
@@ -245,11 +245,11 @@
     };
 
     //删除分类
-    function deleteSort() {
+    function deleteSort(dom) {
         if(!confirm('确认要删除吗？')){
             return;
         }
-        var sortId=$(".sortliid").attr("sortId");
+        var sortId=$(dom).parent().attr("sortId");
         zhdelete(sort+"/"+sortId).then(function (rs) {
             if(rs.info){
                 showSort();
