@@ -10,7 +10,11 @@
 2.  如果你已注册，并且成功登陆，可点击右侧的个人昵称，进入管理书签页面，如下图  
 
 ![](./img/readme/zhuye.jpg)  
-![](./img/readme/system.jpg)
+![](./img/readme/system.jpg)  
+
+3.  点击我的书签，可对书签的分类以及分类下面的书签进行增、删、改、查等操作。如下图  
+
+![](./img/readme/note.jpg)  
 
 
   
